@@ -1,0 +1,58 @@
+version: '3'
+services:
+    idx:
+        image: splunk/splunk
+        hostname: idx
+        ports:
+            - "8000"
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    ds:
+        image: splunk/splunk
+        hostname: ds 
+        ports:
+            - "8000"
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    hf1:
+        image: splunk/splunk
+        hostname: hf1
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    hf2:
+        image: splunk/splunk    
+        hostname: hf2
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    uf1:
+        image: splunk/universalforwarder
+        hostname: uf1
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license
+            SPLUNK_PASSWORD: splunk01
+    uf2:
+        image: splunk/universalforwarder
+        hostname: uf2
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license
+            SPLUNK_PASSWORD: splunk01
+
+networks:
+    splunk-lsm:
+
