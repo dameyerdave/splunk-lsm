@@ -1,3 +1,4 @@
 **/lookups/**
 **/local
 *.tar.gz
+**/local.meta
