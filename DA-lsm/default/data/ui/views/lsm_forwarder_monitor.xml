@@ -1,0 +1,32 @@
+<dashboard>
+  <search id="lsm_analyse_sources">
+    <query>| savedsearch lsm_analyse_sources</query>
+    <earliest>1</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
+  <label>Forwarder Monitor</label>
+  <row>
+    <panel>
+      <title>Forwarder Overview</title>
+      <table>
+        <search>
+          <query>|savedsearch lsm_forwarder_overview</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"missing":#DC4E41,"active":#B6C75A}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</dashboard>
