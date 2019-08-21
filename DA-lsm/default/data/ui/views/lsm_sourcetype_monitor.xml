@@ -13,7 +13,7 @@
         <search base="lsm_analyse_sources">
           <query>| where status != "ok" | `lsm_format_sourcetype_monitor_table_debug`</query>
         </search>
-        <option name="count">20</option>
+        <option name="count">100</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
@@ -41,7 +41,7 @@
         <search base="lsm_analyse_sources">
           <query>| where status == "ok" | `lsm_format_sourcetype_monitor_table_debug`</query>
         </search>
-        <option name="count">20</option>
+        <option name="count">100</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
@@ -50,29 +50,6 @@
         <option name="wrap">true</option>
         <drilldown>
           <link target="_blank">search?q=index=*%20index=%22$row.Index$%22%20sourcetype=%22$row.Sourcetype$%22&amp;earliest=-24h@h&amp;latest=now</link>
-        </drilldown>
-      </table>
-    </panel>
-  </row>
-  <row>
-    <panel>
-      <title>Disabled monitors (click to enable)</title>
-      <table>
-        <search>
-          <query>| inputlookup lsm_sourcetypes | search enabled=false | table host,source,maxAge,maxStdDev</query>
-          <earliest>-4h</earliest>
-          <latest>now</latest>
-          <sampleRatio>1</sampleRatio>
-        </search>
-        <option name="count">20</option>
-        <option name="dataOverlayMode">none</option>
-        <option name="drilldown">cell</option>
-        <option name="percentagesRow">false</option>
-        <option name="rowNumbers">false</option>
-        <option name="totalsRow">false</option>
-        <option name="wrap">true</option>
-        <drilldown>
-          <link target="_self">search?q=%7C%20%60lsm_toggle_enabled(%22$row.index$%22,%22$row.sourcetype$%22)%60&amp;earliest=$earliest$&amp;latest=$latest$</link>
         </drilldown>
       </table>
     </panel>
