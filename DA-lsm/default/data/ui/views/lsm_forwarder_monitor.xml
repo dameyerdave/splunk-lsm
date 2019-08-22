@@ -15,7 +15,7 @@
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
+        <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
@@ -23,6 +23,9 @@
         <format type="color" field="Status">
           <colorPalette type="map">{"missing":#DC4E41,"active":#B6C75A}</colorPalette>
         </format>
+        <drilldown>
+          <link target="_blank">search?q=index=_internal%20(hostname=%22$row.Instance$%22%20OR%20host=%22$row.Instance$%22)%20(log_level=%22ERROR%22%20OR%20log_level=%22WARN%22)&amp;earliest=-24h@h&amp;latest=now</link>
+        </drilldown>
       </table>
     </panel>
   </row>
@@ -35,7 +38,7 @@
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
+        <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
@@ -43,6 +46,9 @@
         <format type="color" field="Status">
           <colorPalette type="map">{"missing":#DC4E41,"active":#B6C75A}</colorPalette>
         </format>
+        <drilldown>
+          <link target="_blank">search?q=index=_internal%20(hostname=%22$row.Instance$%22%20OR%20host=%22$row.Instance$%22)%20(log_level=%22ERROR%22%20OR%20log_level=%22WARN%22)&amp;earliest=-24h@h&amp;latest=now</link>
+        </drilldown>
       </table>
     </panel>
   </row>

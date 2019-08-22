@@ -1,5 +1,6 @@
 <nav search_view="search" color="#65A637">
     <view name="lsm_forwarder_monitor" default="true" />
+    <view name="lsm_index_monitor" />
     <view name="lsm_sourcetype_monitor" />
     <view name="lsm_source_monitor" />
     <collection label="Ressources">

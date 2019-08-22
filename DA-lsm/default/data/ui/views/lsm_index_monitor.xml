@@ -1,0 +1,24 @@
+<dashboard>
+  <label>Index Monitor</label>
+  <row>
+    <panel>
+      <title>Missing indexes</title>
+      <table>
+        <search>
+          <query>| savedsearch lsm_missing_indexes</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</dashboard>
