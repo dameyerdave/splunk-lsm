@@ -17,7 +17,6 @@
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
@@ -30,7 +29,7 @@
           <scale type="minMidMax"></scale>
         </format>
         <drilldown>
-          <link target="_blank">search?q=earliest=-30d@d%20index=%22$row.Index$%22%20sourcetype=%22$row.Sourcetype$%22%20%7C%20stats%20values(source)%20as%20Sources%20by%20host%20%7C%20rename%20host%20AS%20Host&amp;earliest=-24h@h&amp;latest=now</link>
+          <link target="_blank">search?q=%7C%20%60lsm_analyse_source($row.Index$,$row.Sourcetype$)%60&amp;earliest=$earliest$&amp;latest=$latest$</link>
         </drilldown>
       </table>
     </panel>
@@ -46,7 +45,6 @@
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
-        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
@@ -54,7 +52,7 @@
           <colorPalette type="map">{"ok":#B6C75A}</colorPalette>
         </format>
         <drilldown>
-          <link target="_blank">search?q=earliest=-30d@d%20index=%22$row.Index$%22%20sourcetype=%22$row.Sourcetype$%22%20%7C%20stats%20values(source)%20as%20Sources%20by%20host%20%7C%20rename%20host%20AS%20Host&amp;earliest=-24h@h&amp;latest=now</link>
+          <link target="_blank">search?q=%7C%20%60lsm_analyse_source($row.Index$,$row.Sourcetype$)%60&amp;earliest=$earliest$&amp;latest=$latest$</link>
         </drilldown>
       </table>
     </panel>
