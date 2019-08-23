@@ -2,6 +2,30 @@
   <label>Index Monitor</label>
   <row>
     <panel>
+      <title>Index Status</title>
+      <table>
+        <search>
+          <query>| savedsearch lsm_analyse_indexes</query>
+          <earliest>0</earliest>
+          <latest></latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"ok":#B6C75A,"outage":#DC4E41,"underload":#F8BE34,"overload":#F1813F}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
       <title>Missing indexes</title>
       <table>
         <search>
