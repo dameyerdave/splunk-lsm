@@ -29,12 +29,11 @@
           <scale type="minMidMax"></scale>
         </format>
         <drilldown>
-          <link target="_blank">search?q=%7C%20%60lsm_analyse_source($row.Index$,$row.Sourcetype$)%60&amp;earliest=$earliest$&amp;latest=$latest$</link>
+          <set token="index">$row.Index$</set>
+          <set token="sourcetype">$row.Sourcetype$</set>
         </drilldown>
       </table>
     </panel>
-  </row>
-  <row>
     <panel>
       <title>Monitored valid sourcetypes</title>
       <table>
@@ -52,45 +51,33 @@
           <colorPalette type="map">{"ok":#B6C75A}</colorPalette>
         </format>
         <drilldown>
-          <link target="_blank">search?q=%7C%20%60lsm_analyse_source($row.Index$,$row.Sourcetype$)%60&amp;earliest=$earliest$&amp;latest=$latest$</link>
+          <set token="index">$row.Index$</set>
+          <set token="sourcetype">$row.Sourcetype$</set>
         </drilldown>
       </table>
     </panel>
   </row>
   <row>
-    <panel>
-      <title>Data Quality</title>
+    <panel depends="$index$">
+      <title>Sources for $index$ / $sourcetype$</title>
       <table>
         <search>
-          <query>`lsm_set_index_internal` splunk_server=* source=*splunkd.log*
-            (component=AggregatorMiningProcessor OR component=LineBreakingProcessor OR component=DateParserVerbose)
-            (log_level=WARN OR log_level=ERROR)
-            | rex field=event_message "Context: source(::|=)(?&lt;context_source&gt;[^\|]*?)\|host(::|=)(?&lt;context_host&gt;[^\|]*?)\|(?&lt;context_sourcetype&gt;[^\|]*?)\|"
-            | eval data_source = if(isnull(data_source) AND isnotnull(context_source), context_source, data_source)
-            | eval data_host = if(isnull(data_host) AND isnotnull(context_host), context_host, data_host)
-            | eval data_sourcetype = if(isnull(data_sourcetype) AND isnotnull(context_sourcetype), context_sourcetype, data_sourcetype)
-            | stats
-              count(eval(component=="LineBreakingProcessor" OR component=="DateParserVerbose" OR component=="AggregatorMiningProcessor")) as total_issues
-              dc(data_host) AS "Host Count"
-              dc(data_source) AS "Source Count"
-              count(eval(component=="LineBreakingProcessor")) AS "Line Breaking Issues"
-              count(eval(component=="DateParserVerbose")) AS "Timestamp Parsing Issues"
-              count(eval(component=="AggregatorMiningProcessor")) AS "Aggregation Issues" by data_sourcetype
-            | sort - total_issues
-            | rename
-              data_sourcetype as Sourcetype
-              total_issues as "Total Issues"</query>
-          <earliest>-24h@h</earliest>
-          <latest>now</latest>
+          <query>| `lsm_analyse_source($index$,$sourcetype$)`</query>
+          <earliest>1</earliest>
+          <latest>1566900512</latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
         <option name="drilldown">none</option>
         <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"ok":#B6C75A,"outage":#DC4E41,"underload":#F8BE34,"overload":#F1813F}</colorPalette>
+        </format>
       </table>
     </panel>
   </row>
