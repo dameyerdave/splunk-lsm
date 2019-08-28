@@ -114,7 +114,7 @@
       <title>$log_level$ Messages of $host$</title>
       <table>
         <search>
-          <query>index=_internal component IN ($components$) NOT log_level=INFO host="$host$" log_level="$log_level$" | stats latest(_time) AS "Latest" count by event_message | rename event_message AS Message, count AS Count | convert ctime(Latest) | table Latest,Message,Count</query>
+          <query>index=_internal component IN ($components$) NOT log_level=INFO host="$host$" log_level="$log_level$" | rex field=event_message "source=.*/(?&lt;from_source&gt;[^|]+)\|host=(?&lt;from_host&gt;[^|]+)\|(?&lt;from_sourcetype&gt;[^|]+)" | eval Source = coalesce(from_source,source,"unknown"), Host = coalesce(from_host,host,"unknown"), Sourcetype = coalesce(from_sourcetype,sourcetype,"unknown"), event_message = replace(event_message, " Context:.*", "") | stats latest(_time) AS "Latest" count values(Host) AS Host values(Sourcetype) AS Sourcetype values(Source) AS Source by event_message  | rename event_message AS Message count AS Count | convert ctime(Latest) | table Latest,Host,Sourcetype,Source,Message,Count | sort -Latest</query>
           <earliest>$timepicker.earliest$</earliest>
           <latest>$timepicker.latest$</latest>
           <sampleRatio>1</sampleRatio>

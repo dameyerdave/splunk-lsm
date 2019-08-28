@@ -3,6 +3,7 @@
     <view name="lsm_index_monitor" />
     <view name="lsm_sourcetype_monitor" />
     <view name="lsm_source_monitor" />
+    <view name="lsm_source_quality_monitor" />
     <view name="lsm_error_monitor" />
     <view name="lsm_license_monitor" />
     <collection label="Ressources">

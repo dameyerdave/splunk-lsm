@@ -1,0 +1,92 @@
+<form>
+  <label>Source Quality Monitor</label>
+  <fieldset submitButton="false">
+    <input type="time" token="timepicker">
+      <label></label>
+      <default>
+        <earliest>-24h@h</earliest>
+        <latest>now</latest>
+      </default>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <title>New formats by Sourcetype</title>
+      <table>
+        <search>
+          <query>index=lsm_punct_quality type=sourcetype new=true | stats sparkline dc(punct) as count by indicator1,indicator2 | rename indicator1 AS Index indicator2 AS Sourcetype sparkline AS "New puncts over time" count AS "New puncts" percent as Percent | sort -"New puncts"</query>
+          <earliest>$timepicker.earliest$</earliest>
+          <latest>$timepicker.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>New formats by Source</title>
+      <table>
+        <search>
+          <query>index=lsm_punct_quality type=source new=true | stats sparkline dc(punct) AS count by indicator1, indicator2 | rename indicator1 AS Host indicator2 AS Source sparkline AS "New puncts over time" count AS "New puncts" percent as Percent | sort -"New puncts"</query>
+          <earliest>$timepicker.earliest$</earliest>
+          <latest>$timepicker.latest$</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Most scattered sourcetypes</title>
+      <table>
+        <search>
+          <query>| inputlookup lsm_punct_lookup | search type="sourcetype" | stats dc(punct) AS "Number of punct" by indicator1,indicator2 | rename indicator1 AS Index indicator2 AS Sourcetype | sort -"Number of punct" | head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+    <panel>
+      <title>Most scattered sources</title>
+      <table>
+        <search>
+          <query>| inputlookup lsm_punct_lookup | search type="source" | stats dc(punct) AS "Number of punct" by indicator1,indicator2 | rename indicator1 AS Host indicator2 AS Source | sort -"Number of punct" | head 10</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
+    </panel>
+  </row>
+</form>
