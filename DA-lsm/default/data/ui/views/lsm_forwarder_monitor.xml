@@ -1,0 +1,103 @@
+<dashboard>
+  <search id="lsm_forwarder_overview">
+    <query>|savedsearch lsm_forwarder_overview</query>
+    <earliest>1</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
+  <label>Forwarder Monitor</label>
+  <row>
+    <panel>
+      <title>Zone Overview</title>
+      <chart>
+        <search>
+          <query>|savedsearch lsm_forwarder_overview | stats count by Zone,Status</query>
+          <earliest>1</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="charting.axisLabelsX.majorLabelStyle.overflowMode">ellipsisNone</option>
+        <option name="charting.axisLabelsX.majorLabelStyle.rotation">0</option>
+        <option name="charting.axisTitleX.visibility">collapsed</option>
+        <option name="charting.axisTitleY.visibility">collapsed</option>
+        <option name="charting.axisTitleY2.visibility">collapsed</option>
+        <option name="charting.axisX.abbreviation">none</option>
+        <option name="charting.axisX.scale">linear</option>
+        <option name="charting.axisY.abbreviation">none</option>
+        <option name="charting.axisY.scale">linear</option>
+        <option name="charting.axisY2.abbreviation">none</option>
+        <option name="charting.axisY2.enabled">0</option>
+        <option name="charting.axisY2.scale">inherit</option>
+        <option name="charting.chart">pie</option>
+        <option name="charting.chart.bubbleMaximumSize">50</option>
+        <option name="charting.chart.bubbleMinimumSize">10</option>
+        <option name="charting.chart.bubbleSizeBy">area</option>
+        <option name="charting.chart.nullValueMode">gaps</option>
+        <option name="charting.chart.showDataLabels">none</option>
+        <option name="charting.chart.sliceCollapsingThreshold">0.01</option>
+        <option name="charting.chart.stackMode">default</option>
+        <option name="charting.chart.style">shiny</option>
+        <option name="charting.drilldown">none</option>
+        <option name="charting.fieldColors">{"missing":0xDC4E41,"active":0xB6C75A}</option>
+        <option name="charting.layout.splitSeries">0</option>
+        <option name="charting.layout.splitSeries.allowIndependentYRanges">0</option>
+        <option name="charting.legend.labelStyle.overflowMode">ellipsisMiddle</option>
+        <option name="charting.legend.mode">standard</option>
+        <option name="charting.legend.placement">none</option>
+        <option name="charting.lineWidth">2</option>
+        <option name="height">212</option>
+        <option name="refresh.display">progressbar</option>
+        <option name="trellis.enabled">1</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">small</option>
+        <option name="trellis.splitBy">Zone</option>
+      </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Heavy Forwarders</title>
+      <table>
+        <search base="lsm_forwarder_overview">
+          <query>| search "Forwarder Type" = "Heavy Forwarder"</query>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"missing":#DC4E41,"active":#B6C75A}</colorPalette>
+        </format>
+        <drilldown>
+          <link target="_blank">search?q=index=_internal%20(hostname=%22$row.Instance$%22%20OR%20host=%22$row.Instance$%22)%20(log_level=%22ERROR%22%20OR%20log_level=%22WARN%22)&amp;earliest=-24h@h&amp;latest=now</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Universal Forwarders</title>
+      <table>
+        <search base="lsm_forwarder_overview">
+          <query>| search "Forwarder Type" = "Universal Forwarder"</query>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="Status">
+          <colorPalette type="map">{"missing":#DC4E41,"active":#B6C75A}</colorPalette>
+        </format>
+        <drilldown>
+          <link target="_blank">search?q=index=_internal%20(hostname=%22$row.Instance$%22%20OR%20host=%22$row.Instance$%22)%20(log_level=%22ERROR%22%20OR%20log_level=%22WARN%22)&amp;earliest=-24h@h&amp;latest=now</link>
+        </drilldown>
+      </table>
+    </panel>
+  </row>
+</dashboard>
