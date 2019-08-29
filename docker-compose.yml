@@ -3,6 +3,7 @@ services:
     idx:
         image: splunk/splunk
         hostname: idx
+        tty: true
         ports:
             - "8000"
         networks:
@@ -13,6 +14,7 @@ services:
     ds:
         image: splunk/splunk
         hostname: ds 
+        tty: true
         ports:
             - "8000"
         networks:
@@ -23,6 +25,7 @@ services:
     hf1:
         image: splunk/splunk
         hostname: hf1
+        tty: true
         networks:
             - splunk-lsm
         environment:
@@ -31,6 +34,34 @@ services:
     hf2:
         image: splunk/splunk    
         hostname: hf2
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    hf3:
+        image: splunk/splunk    
+        hostname: hf3
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    hf4:
+        image: splunk/splunk    
+        hostname: hf4
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license --answer-yes
+            SPLUNK_PASSWORD: splunk01
+    hf5:
+        image: splunk/splunk    
+        hostname: hf5
+        tty: true
         networks:
             - splunk-lsm
         environment:
@@ -39,6 +70,7 @@ services:
     uf1:
         image: splunk/universalforwarder
         hostname: uf1
+        tty: true
         networks:
             - splunk-lsm
         environment:
@@ -47,6 +79,34 @@ services:
     uf2:
         image: splunk/universalforwarder
         hostname: uf2
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license
+            SPLUNK_PASSWORD: splunk01
+    uf3:
+        image: splunk/universalforwarder
+        hostname: uf3
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license
+            SPLUNK_PASSWORD: splunk01
+    uf4:
+        image: splunk/universalforwarder
+        hostname: uf4
+        tty: true
+        networks:
+            - splunk-lsm
+        environment:
+            SPLUNK_START_ARGS: --accept-license
+            SPLUNK_PASSWORD: splunk01
+    uf5:
+        image: splunk/universalforwarder
+        hostname: uf5
+        tty: true
         networks:
             - splunk-lsm
         environment:
