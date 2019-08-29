@@ -62,7 +62,7 @@
       <title>Sources for $index$ / $sourcetype$</title>
       <table>
         <search>
-          <query>| `lsm_analyse_source($index$,$sourcetype$)`</query>
+          <query>| `lsm_analyse_source($index$,*,$sourcetype$)`</query>
           <earliest>1</earliest>
           <latest>1566900512</latest>
           <sampleRatio>1</sampleRatio>

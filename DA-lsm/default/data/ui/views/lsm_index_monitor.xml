@@ -24,7 +24,7 @@
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
         <format type="color" field="Status">
-          <colorPalette type="map">{"Ok":#B6C75A,"Outdated":#DC4E41}</colorPalette>
+          <colorPalette type="map">{"ok":#B6C75A,"outage":#DC4E41,"underload":#F8BE34,"overload":#F1813F}</colorPalette>
         </format>
         <drilldown>
           <set token="index">$row.Index$</set>
@@ -81,10 +81,10 @@
   </row>
   <row>
     <panel depends="$sourcetype$">
-      <title>Sources for $index$ / $sourcetype$</title>
+      <title>Sources of $index$ / $sourcetype$</title>
       <table>
         <search>
-          <query>| `lsm_analyse_source($index$,$sourcetype$)`</query>
+          <query>| `lsm_analyse_source($index$,*,$sourcetype$)`</query>
           <earliest>1</earliest>
           <latest>1566900512</latest>
           <sampleRatio>1</sampleRatio>

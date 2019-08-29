@@ -1,11 +1,13 @@
 <nav search_view="search" color="#65A637">
     <view name="lsm_forwarder_monitor" default="true"/>
     <view name="lsm_index_monitor" />
+    <view name="lsm_host_monitor" />
     <view name="lsm_sourcetype_monitor" />
     <view name="lsm_source_monitor" />
     <view name="lsm_source_quality_monitor" />
     <view name="lsm_error_monitor" />
     <view name="lsm_license_monitor" />
+    <view name="lsm_monitoring_overview" />
     <collection label="Ressources">
     	<view name="search" />
     	<view name="dashboards" />
