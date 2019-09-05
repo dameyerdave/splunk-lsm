@@ -1,4 +1,4 @@
-<nav search_view="search" color="#65A637">
+<nav color="#3d7e3d">
     <view name="lsm_forwarder_monitor" default="true"/>
     <view name="lsm_index_monitor" />
     <view name="lsm_host_monitor" />
@@ -13,5 +13,6 @@
     	<view name="dashboards" />
     	<view name="reports" />
     	<view name="alerts" />
+    	<a href="/manager/DA-lsm/admin/macros">Macros</a>
     </collection>
 </nav>
