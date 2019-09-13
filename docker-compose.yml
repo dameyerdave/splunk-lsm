@@ -112,6 +112,28 @@ services:
         environment:
             SPLUNK_START_ARGS: --accept-license
             SPLUNK_PASSWORD: splunk01
+    lsmadmin:
+        image: ubuntu
+        hostname: lsm-admin
+        tty: true
+        networks:
+            - splunk-lsm
+    ldap:
+        image: osixia/openldap
+        hostname: ldap
+        tty: true
+        networks:
+            - splunk-lsm
+    ldapadmin:
+        image: osixia/phpldapadmin
+        hostname: ldapadmin
+        tty: true
+        ports:
+            - "443"
+        networks:
+            - splunk-lsm
+        environment:
+            PHPLDAPADMIN_LDAP_HOSTS: ldap
 
 networks:
     splunk-lsm:
