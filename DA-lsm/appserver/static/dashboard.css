@@ -1,0 +1,12 @@
+#header > div[data-view="views/shared/appbar/Master"] {
+	background-color: #B6C75A !important;
+}
+#header > div[data-view="views/shared/appbar/Master"] span {
+	color: #000000 !important;
+}
+#header > div[data-view="views/shared/appbar/Master"] i[data-view="views/shared/Icon"] {
+	color: #000000 !important;
+}
+#header > div[data-view="views/shared/appbar/Master"] div[data-role="underline"] {
+	background-color: #000000 !important;
+}
