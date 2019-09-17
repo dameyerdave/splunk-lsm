@@ -113,15 +113,20 @@ services:
             SPLUNK_START_ARGS: --accept-license
             SPLUNK_PASSWORD: splunk01
     lsmadmin:
-        image: ubuntu
-        hostname: lsm-admin
+        build: lsmadmin
+        hostname: lsmadmin
         tty: true
+        ports:
+            - "8080"
         networks:
             - splunk-lsm
     ldap:
         image: osixia/openldap
         hostname: ldap
         tty: true
+        ports: 
+            - "389"
+            - "636"
         networks:
             - splunk-lsm
     ldapadmin:
