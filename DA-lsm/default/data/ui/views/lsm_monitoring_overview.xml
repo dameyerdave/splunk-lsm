@@ -1,0 +1,103 @@
+<dashboard>
+  <label>Monitoring Overview</label>
+  <row>
+    <panel>
+      <title>Indexes</title>
+      <html>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_index_lookup.csv&amp;type=csv">Edit</a>
+      </html>
+      <table>
+        <search>
+          <query>| inputlookup lsm_index_lookup | table index,enabled,maxAge,maxStDev,alarming</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="enabled">
+          <colorPalette type="map">{"true":#B6C75A,"false":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <title>Hosts</title>
+      <html>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_host_lookup.csv&amp;type=csv">Edit</a>
+      </html>
+      <table>
+        <search>
+          <query>| inputlookup lsm_host_lookup | table host,enabled,maxAge,maxStDev,alarming</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="enabled">
+          <colorPalette type="map">{"true":#B6C75A,"false":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>Sourcetypes</title>
+      <html>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_sourcetype_lookup.csv&amp;type=csv">Edit</a>
+      </html>
+      <table>
+        <search>
+          <query>| inputlookup lsm_sourcetype_lookup | table index,sourcetype,enabled,maxAge,maxStDev,alarming</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="enabled">
+          <colorPalette type="map">{"true":#B6C75A,"false":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+    <panel>
+      <title>Sources</title>
+      <html>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_source_lookup.csv&amp;type=csv">Edit</a>
+      </html>
+      <table>
+        <search>
+          <query>| inputlookup lsm_source_lookup | table host,source,enabled,maxAge,maxStDev,alarming</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="enabled">
+          <colorPalette type="map">{"true":#B6C75A,"false":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
+  </row>
+</dashboard>
