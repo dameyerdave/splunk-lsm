@@ -40,7 +40,7 @@
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">none</option>
+        <option name="drilldown">cell</option>
         <option name="percentagesRow">false</option>
         <option name="refresh.display">progressbar</option>
         <option name="rowNumbers">false</option>
@@ -49,6 +49,9 @@
         <format type="color" field="Status">
           <colorPalette type="map">{"ok":#B6C75A,"outage":#DC4E41,"underload":#F8BE34,"overload":#F1813F}</colorPalette>
         </format>
+        <drilldown>
+          <link target="_blank">search?q=index=*%20host=%22$row.Host$%22%20source=%22$row.Source$%22&amp;earliest=-24h&amp;latest=now</link>
+        </drilldown>
       </table>
     </panel>
   </row>
