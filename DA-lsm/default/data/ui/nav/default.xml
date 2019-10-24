@@ -14,5 +14,6 @@
     	<view name="reports" />
     	<view name="alerts" />
     	<a href="/manager/DA-lsm/admin/macros">Macros</a>
+    	<a href="/manager/DA-lsm/admin/lookups">Lookups</a>
     </collection>
 </nav>
