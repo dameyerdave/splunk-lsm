@@ -7,7 +7,7 @@
     <view name="lsm_source_quality_monitor" />
     <view name="lsm_error_monitor" />
     <view name="lsm_license_monitor" />
-    <view name="lsm_monitoring_overview" />
+    <view name="lsm_monitoring_configuration" />
     <collection label="Ressources">
     	<view name="search" />
     	<view name="dashboards" />
