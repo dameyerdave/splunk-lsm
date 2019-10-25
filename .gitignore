@@ -1,4 +1,5 @@
-**/lookups/**
+**/lookups/*.csv
+**/lookups/lookup_file_backups
 **/local
 *.tar.gz
 **/metadata/local.meta
