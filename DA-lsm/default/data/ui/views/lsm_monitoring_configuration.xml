@@ -122,13 +122,14 @@
   </row>
   <row>
     <panel>
-      <title>Zones</title>
+      <title>Datamodels</title>
       <html>
-        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_zone_lookup.csv&amp;type=csv">Edit</a>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_datamodel_lookup.csv&amp;type=csv">Edit</a>
+        | <a target="_blank" href="/app/DA-lsm/search?s=%2FservicesNS%2Fnobody%2FDA-lsm%2Fsaved%2Fsearches%2Flsm_generate_datamodel_lookup">Generate</a>
       </html>
       <table>
         <search>
-          <query>| inputlookup lsm_zone_lookup | table ip,zone</query>
+          <query>| inputlookup lsm_datamodel_lookup | table datamodel,source,enabled,maxAge,maxStDev,alarming</query>
           <earliest>-24h@h</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>
@@ -171,6 +172,30 @@
     </panel>
   </row>
   <row>
+    <panel>
+      <title>Zones</title>
+      <html>
+        <a target="_blank" href="/app/lookup_editor/lookup_edit?owner=nobody&amp;namespace=DA-lsm&amp;lookup=lsm_zone_lookup.csv&amp;type=csv">Edit</a>
+      </html>
+      <table>
+        <search>
+          <query>| inputlookup lsm_zone_lookup | table ip,zone</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+        <format type="color" field="enabled">
+          <colorPalette type="map">{"true":#B6C75A,"false":#DC4E41}</colorPalette>
+        </format>
+      </table>
+    </panel>
     <panel>
       <title>Applications</title>
       <html>

@@ -4,6 +4,7 @@
     <view name="lsm_host_monitor" />
     <view name="lsm_sourcetype_monitor" />
     <view name="lsm_source_monitor" />
+    <view name="lsm_datamodel_monitor" />
     <view name="lsm_source_quality_monitor" />
     <view name="lsm_error_monitor" />
     <view name="lsm_license_monitor" />
