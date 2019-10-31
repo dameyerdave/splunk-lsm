@@ -6,6 +6,10 @@
       <table>
         <search>
           <query>| savedsearch lsm_analyse_hosts
+| eval type="host"
+| lookup lsm_application_lookup indicator AS Host,type output application
+| fields - type
+| rename application AS Application
 | sort - Status</query>
           <earliest>0</earliest>
           <latest></latest>
